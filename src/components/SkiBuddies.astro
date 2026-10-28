@@ -1,0 +1,78 @@
+---
+// Two chibi friends bundled up on a snowbank. Drawn by hand in SVG.
+---
+
+<svg class="buddies" viewBox="0 0 260 220" role="img"
+     aria-label="Two small cartoon friends in beanies and scarves standing in the snow, one holding skis">
+  <defs>
+    <pattern id="stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(90)">
+      <rect width="4" height="8" fill="var(--red)" />
+      <rect x="4" width="4" height="8" fill="#ffffff" />
+    </pattern>
+  </defs>
+
+  <!-- snowbank -->
+  <ellipse cx="130" cy="204" rx="122" ry="18" fill="var(--bank)" />
+  <ellipse cx="130" cy="208" rx="110" ry="9" fill="var(--bank-shadow)" opacity="0.6" />
+
+  <!-- friend on the left: red beanie, mustard scarf -->
+  <g class="friend">
+    <ellipse cx="82" cy="176" rx="30" ry="27" fill="var(--coat)" />
+    <circle cx="54" cy="170" r="8" fill="var(--red)" />
+    <circle cx="110" cy="170" r="8" fill="var(--red)" />
+    <ellipse cx="70" cy="200" rx="10" ry="6" fill="#24324a" />
+    <ellipse cx="94" cy="200" rx="10" ry="6" fill="#24324a" />
+
+    <circle cx="82" cy="110" r="38" fill="#ffe6d5" />
+    <path d="M44 108 a38 38 0 0 1 76 0 z" fill="var(--red)" />
+    <rect x="42" y="98" width="80" height="14" rx="7" fill="#ff7f8f" />
+    <circle cx="82" cy="70" r="9" fill="#ffffff" />
+
+    <ellipse cx="69" cy="124" rx="3.6" ry="4.6" fill="#24324a" />
+    <ellipse cx="95" cy="124" rx="3.6" ry="4.6" fill="#24324a" />
+    <circle cx="61" cy="134" r="5" fill="#ff9aa8" opacity="0.7" />
+    <circle cx="103" cy="134" r="5" fill="#ff9aa8" opacity="0.7" />
+    <path d="M78 134 q4 4 8 0" fill="none" stroke="#24324a" stroke-width="2.5" stroke-linecap="round" />
+
+    <rect x="52" y="142" width="60" height="15" rx="7.5" fill="var(--mustard)" />
+    <path d="M96 150 q6 20 -2 34 l12 2 q6 -18 0 -36 z" fill="var(--mustard)" />
+    <path d="M94 184 l12 2 M95 179 l12 2" stroke="#d99a2b" stroke-width="2" />
+  </g>
+
+  <!-- friend on the right: holds skis, mustard beanie, striped scarf -->
+  <g class="friend">
+    <g transform="rotate(8 214 120)">
+      <rect x="204" y="60" width="7" height="140" rx="3.5" fill="var(--red)" />
+      <rect x="215" y="60" width="7" height="140" rx="3.5" fill="var(--red)" />
+      <path d="M204 64 q3.5 -12 7 0 M215 64 q3.5 -12 7 0" fill="var(--red)" />
+    </g>
+
+    <ellipse cx="176" cy="182" rx="25" ry="22" fill="#8fc7b3" />
+    <circle cx="153" cy="178" r="7" fill="var(--mustard)" />
+    <circle cx="200" cy="168" r="7" fill="var(--mustard)" />
+    <ellipse cx="166" cy="202" rx="9" ry="5" fill="#24324a" />
+    <ellipse cx="186" cy="202" rx="9" ry="5" fill="#24324a" />
+
+    <circle cx="176" cy="128" r="31" fill="#ffe6d5" />
+    <path d="M145 126 a31 31 0 0 1 62 0 z" fill="var(--mustard)" />
+    <rect x="143" y="118" width="66" height="12" rx="6" fill="#f7cf7d" />
+    <circle cx="176" cy="94" r="7.5" fill="var(--red)" />
+
+    <path d="M165 141 q3 -3 6 0" fill="none" stroke="#24324a" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M181 141 q3 -3 6 0" fill="none" stroke="#24324a" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="159" cy="148" r="4.5" fill="#ff9aa8" opacity="0.7" />
+    <circle cx="193" cy="148" r="4.5" fill="#ff9aa8" opacity="0.7" />
+    <path d="M172 149 q4 4 8 0" fill="none" stroke="#24324a" stroke-width="2.5" stroke-linecap="round" />
+
+    <rect x="151" y="155" width="50" height="13" rx="6.5" fill="url(#stripes)" />
+    <path d="M156 162 q-8 16 -2 30 l10 -2 q-4 -14 2 -28 z" fill="url(#stripes)" />
+  </g>
+</svg>
+
+<style>
+  .buddies {
+    width: 100%;
+    max-width: 16rem;
+    height: auto;
+  }
+</style>

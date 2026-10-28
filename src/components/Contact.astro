@@ -1,0 +1,43 @@
+---
+import { me } from '../data/site';
+
+const links = [
+  { label: 'Email', text: me.email, href: `mailto:${me.email}` },
+  { label: 'GitHub', text: `@${me.github}`, href: `https://github.com/${me.github}` },
+  me.linkedin && { label: 'LinkedIn', text: 'Connect on LinkedIn', href: me.linkedin },
+].filter(Boolean) as { label: string; text: string; href: string }[];
+---
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Say hi about research, projects, physics, or the best runs in Tahoe.</p>
+  <dl>
+    {links.map((link) => (
+      <div>
+        <dt>{link.label}</dt>
+        <dd><a href={link.href}>{link.text}</a></dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<style>
+  dl {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  dl div {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1rem;
+  }
+
+  dt { color: var(--ink-soft); }
+
+  dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+</style>

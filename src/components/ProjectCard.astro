@@ -1,0 +1,56 @@
+---
+// One project, drawn as a little snowball next to its name. Work in progress gets a dashed outline.
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { title, description, meta, link, linkText, color, placeholder } = project;
+---
+
+<li class:list={['project', { placeholder }]}>
+  <span class="ball" style={`--ball: var(--${color})`} aria-hidden="true"></span>
+  <div>
+    <h3>{title}</h3>
+    {meta && <p class="meta">{meta}{placeholder && ', in progress'}</p>}
+    <p>{description}</p>
+    {link && <a href={link}>{linkText ?? 'Read more'}</a>}
+  </div>
+</li>
+
+<style>
+  .project {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.25rem 0;
+  }
+
+  .project + .project { border-top: 2px dashed var(--line); }
+
+  .ball {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--ball);
+    margin-top: 0.15rem;
+  }
+
+  .placeholder .ball {
+    background: transparent;
+    border: 3px dashed var(--ball);
+  }
+
+  h3 { margin-bottom: 0.15rem; }
+
+  .meta {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p { margin: 0 0 0.5rem; }
+</style>

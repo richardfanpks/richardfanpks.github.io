@@ -1,0 +1,28 @@
+---
+// A titled list of projects. Used for both Research and Projects.
+import ProjectCard from './ProjectCard.astro';
+import type { Project } from '../data/projects';
+
+interface Props {
+  id: string;
+  title: string;
+  items: Project[];
+}
+
+const { id, title, items } = Astro.props;
+---
+
+<section id={id}>
+  <h2>{title}</h2>
+  <ul>
+    {items.map((project) => <ProjectCard project={project} />)}
+  </ul>
+</section>
+
+<style>
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>

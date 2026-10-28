@@ -1,0 +1,68 @@
+---
+// A tiny planet with a moon going around it. The page's one moving part.
+---
+
+<svg class="orbit" viewBox="0 0 220 220" role="img" aria-label="A smiling pink planet with a yellow moon orbiting it">
+  <!-- the moon's path, drawn as a dashed loop -->
+  <ellipse cx="110" cy="110" rx="96" ry="38" transform="rotate(-18 110 110)"
+           fill="none" stroke="var(--line)" stroke-width="2.5" stroke-dasharray="3 9" stroke-linecap="round" />
+
+  <!-- The moon is drawn twice on the same path: once behind the planet, and once in front but
+       clipped to the near half of the orbit. So it passes behind the planet, then in front. -->
+  <defs>
+    <clipPath id="near-side">
+      <polygon points="-40,170 260,72 260,260 -40,260" />
+    </clipPath>
+    <g id="moon-body">
+      <circle r="11" fill="var(--butter)" />
+      <circle cx="-3" cy="-2" r="2.5" fill="#e9b93f" />
+      <circle cx="4" cy="4" r="1.8" fill="#e9b93f" />
+    </g>
+  </defs>
+  <use class="moon" href="#moon-body" />
+
+  <!-- the planet and its face -->
+  <circle cx="110" cy="110" r="48" fill="var(--pink)" />
+  <circle cx="92" cy="96" r="12" fill="#ffffff" opacity="0.35" />
+  <circle cx="96" cy="114" r="4.5" fill="#2e2a52" />
+  <circle cx="124" cy="114" r="4.5" fill="#2e2a52" />
+  <path d="M101 126 q9 8 18 0" fill="none" stroke="#2e2a52" stroke-width="3.5" stroke-linecap="round" />
+  <circle cx="86" cy="124" r="5" fill="#ff6f9a" opacity="0.6" />
+  <circle cx="134" cy="124" r="5" fill="#ff6f9a" opacity="0.6" />
+
+  <g clip-path="url(#near-side)"><use class="moon" href="#moon-body" /></g>
+
+  <!-- two still stars -->
+  <path class="star" d="M30 40 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" />
+  <path class="star" d="M184 176 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" />
+
+</svg>
+
+<style>
+  .orbit {
+    width: 100%;
+    max-width: 15rem;
+    height: auto;
+    overflow: visible;
+  }
+
+  .star { fill: var(--butter); }
+
+  .moon {
+    offset-path: path('M 201.3 80.3 A 96 38 -18 1 1 18.7 139.7 A 96 38 -18 1 1 201.3 80.3');
+    offset-rotate: 0deg;
+    animation: orbit 9s linear infinite;
+  }
+
+  @keyframes orbit {
+    to { offset-distance: 100%; }
+  }
+
+  /* People who turn off motion see the moon resting on its orbit. */
+  @media (prefers-reduced-motion: reduce) {
+    .moon {
+      animation: none;
+      offset-distance: 12%;
+    }
+  }
+</style>

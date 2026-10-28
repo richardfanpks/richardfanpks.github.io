@@ -1,0 +1,41 @@
+---
+// Faint cartoon mountains that sit behind everything at the bottom of the screen.
+---
+
+<svg class="mountains" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <!-- far range -->
+  <path fill="var(--ridge-far)" stroke="var(--ridge-far)" stroke-width="24" stroke-linejoin="round"
+        d="M0 260 L150 120 L230 190 L380 60 L520 210 L640 130 L780 230 L930 80 L1080 220 L1190 140 L1300 200 L1440 110 L1440 360 L0 360 Z" />
+  <path fill="var(--cap)" stroke="var(--cap)" stroke-width="6" stroke-linejoin="round"
+        d="M150 120 L180 148 L165 142 L150 156 L136 140 L122 146 Z
+           M380 60 L420 98 L400 92 L382 110 L366 94 L344 100 Z
+           M930 80 L968 116 L948 110 L930 126 L914 112 L892 118 Z
+           M1440 110 L1440 140 L1420 132 L1404 146 L1394 134 Z" />
+
+  <!-- near range -->
+  <path fill="var(--ridge-near)" stroke="var(--ridge-near)" stroke-width="24" stroke-linejoin="round"
+        d="M0 320 L120 230 L210 280 L330 180 L470 300 L600 220 L720 290 L860 170 L1010 300 L1130 230 L1260 290 L1360 220 L1440 270 L1440 360 L0 360 Z" />
+  <path fill="var(--cap)" stroke="var(--cap)" stroke-width="6" stroke-linejoin="round"
+        d="M330 180 L362 206 L346 202 L332 216 L318 204 L298 208 Z
+           M860 170 L894 198 L876 194 L860 208 L846 196 L826 200 Z
+           M1360 220 L1386 240 L1372 238 L1360 248 L1350 238 L1336 240 Z" />
+
+  <!-- a few pines -->
+  <g fill="var(--ridge-far)">
+    <path d="M520 330 l18 -44 l18 44 z M1180 336 l14 -36 l14 36 z M1206 340 l11 -28 l11 28 z" />
+  </g>
+
+  <!-- the snowy ground -->
+  <path fill="var(--snow)" d="M0 344 Q360 326 720 340 T1440 336 L1440 360 L0 360 Z" />
+</svg>
+
+<style>
+  .mountains {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    height: min(38vh, 22rem);
+    z-index: -1;
+    pointer-events: none;
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+// A short label-and-line list, used for skiing results and the Elsewhere section.
+interface Props {
+  items: { label: string; text: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<dl>
+  {items.map((item) => (
+    <div>
+      <dt>{item.label}</dt>
+      <dd>{item.text}</dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  dl {
+    display: grid;
+    gap: 0.6rem;
+    margin: 0;
+  }
+
+  dl div {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 1rem;
+  }
+
+  dt { color: var(--ink-soft); }
+
+  dd { margin: 0; }
+
+  @media (max-width: 30rem) {
+    dl div {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

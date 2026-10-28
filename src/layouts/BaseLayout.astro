@@ -1,0 +1,59 @@
+---
+// The frame every page shares: fonts, global styles, nav and footer.
+import '@fontsource-variable/shantell-sans';
+import '@fontsource-variable/figtree';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Mountains from '../components/Mountains.astro';
+import Snowfall from '../components/Snowfall.astro';
+import { me } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = me.name, description = me.tagline } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Mountains />
+    <Snowfall />
+    <div class="page">
+      <Nav />
+      <main>
+        <slot />
+      </main>
+      <footer>
+        Made with <a href="https://astro.build">Astro</a> for y/cs Catalyst, fall 2026.
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: calc(var(--measure) + 2.5rem);
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 3rem;
+  }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.25rem;
+    border-top: 2px dashed var(--line);
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+</style>

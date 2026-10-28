@@ -1,0 +1,10 @@
+---
+import FactList from './FactList.astro';
+import { skiing } from '../data/site';
+---
+
+<section id="skiing">
+  <h2>On the slopes</h2>
+  <p>{skiing.summary}</p>
+  <FactList items={skiing.results} />
+</section>

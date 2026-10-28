@@ -1,0 +1,47 @@
+---
+// Gentle snow across the page. The flakes are placed when the site builds, so every visit looks
+// the same, and they stop for people who turn off motion.
+const flakes = Array.from({ length: 36 }, (_, i) => {
+  const r = (n: number) => ((Math.sin(i * 12.9898 + n * 78.233) * 43758.5453) % 1 + 1) % 1;
+  return {
+    left: (r(1) * 100).toFixed(1),
+    size: (3 + r(2) * 5).toFixed(1),
+    duration: (11 + r(3) * 10).toFixed(1),
+    delay: (-r(4) * 20).toFixed(1),
+    drift: ((r(5) - 0.5) * 60).toFixed(0),
+  };
+});
+---
+
+<div class="snowfall" aria-hidden="true">
+  {flakes.map((f) => (
+    <span style={`left:${f.left}%; width:${f.size}px; height:${f.size}px; animation-duration:${f.duration}s; animation-delay:${f.delay}s; --drift:${f.drift}px`}></span>
+  ))}
+</div>
+
+<style>
+  .snowfall {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  span {
+    position: absolute;
+    top: -2rem;
+    border-radius: 50%;
+    background: #ffffff;
+    opacity: 0.7;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to { transform: translate(var(--drift), 105vh); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .snowfall { display: none; }
+  }
+</style>
