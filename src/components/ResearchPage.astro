@@ -1,0 +1,112 @@
+---
+// The second "page": research in a snowy forest by day, then contact and the footer.
+import Projects from './Projects.astro';
+import Contact from './Contact.astro';
+import SnowyPine from './SnowyPine.astro';
+import { research } from '../data/projects';
+---
+
+<div class="day">
+  <!-- higher up, a pair of trees frames the research on wide screens -->
+  <div class="upper upper-left" aria-hidden="true"><SnowyPine tone="soft" /></div>
+  <div class="upper upper-right" aria-hidden="true"><SnowyPine /></div>
+
+  <div class="forest left" aria-hidden="true">
+    <SnowyPine class="big" />
+    <SnowyPine class="small" tone="soft" />
+  </div>
+  <div class="forest right" aria-hidden="true">
+    <SnowyPine class="small" tone="soft" />
+    <SnowyPine class="big" />
+  </div>
+
+  <div class="wrap content">
+    <Projects id="research" title="Research" items={research}
+              intro="Two projects where I used code to study the physical world." />
+    <Contact />
+    <footer>
+      Made with <a href="https://astro.build">Astro</a> for y/cs Catalyst, fall 2026.
+    </footer>
+  </div>
+
+  <svg class="ground" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#ffffff" d="M0 40 Q360 10 720 34 T1440 26 L1440 80 L0 80 Z" />
+  </svg>
+</div>
+
+<style>
+  /* The research page uses its own daytime colors. Components read these variables. */
+  .day {
+    --ink: #2b3148;
+    --ink-soft: #69708a;
+    --line: #e3d8c2;
+    --pine: #2f7d6b;
+
+    position: relative;
+    min-height: 100vh;
+    padding: 2rem 0 0;
+    background: var(--cream);
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 3.5rem;
+    padding-bottom: 9rem;
+  }
+
+  .content :global(#research h2) {
+    font-size: var(--step-4);
+    margin-bottom: 0.5rem;
+  }
+
+  footer {
+    padding-top: 1.25rem;
+    border-top: 2px dashed var(--line);
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  .forest {
+    position: absolute;
+    bottom: 1.25rem;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .left { left: -1.5rem; }
+  .right { right: -1.5rem; }
+
+  .forest :global(.big) { width: 17rem; position: relative; z-index: 1; }
+  .forest :global(.small) { width: 10rem; }
+  .left :global(.small) { margin-left: -4.5rem; }
+  .right :global(.small) { margin-right: -4.5rem; }
+
+  .upper {
+    position: absolute;
+    top: 1rem;
+  }
+
+  .upper-left { left: 3%; width: 11rem; top: 6rem; }
+  .upper-right { right: 1%; width: 15rem; }
+
+  .ground {
+    position: absolute;
+    inset: auto 0 0 0;
+    width: 100%;
+    height: 3.5rem;
+  }
+
+  /* When there's no room beside the text, the trees stand together below it. */
+  @media (max-width: 72rem) {
+    .upper { display: none; }
+    .content { padding-bottom: 15rem; }
+    .forest :global(.big) { width: 10rem; }
+    .forest :global(.small) { width: 6.5rem; }
+    .left :global(.small) { margin-left: -2.5rem; }
+    .right :global(.small) { margin-right: -2.5rem; }
+  }
+</style>

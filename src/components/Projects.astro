@@ -7,19 +7,27 @@ interface Props {
   id: string;
   title: string;
   items: Project[];
+  intro?: string;
 }
 
-const { id, title, items } = Astro.props;
+const { id, title, items, intro } = Astro.props;
 ---
 
 <section id={id}>
   <h2>{title}</h2>
+  {intro && <p class="intro">{intro}</p>}
   <ul>
     {items.map((project) => <ProjectCard project={project} />)}
   </ul>
 </section>
 
 <style>
+  .intro {
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+
   ul {
     margin: 0;
     padding: 0;

@@ -1,0 +1,37 @@
+---
+// A big cartoon pine with snow on each layer. `tone` sets how near (deep) or far (soft) it looks.
+interface Props {
+  tone?: 'deep' | 'soft';
+  class?: string;
+}
+
+const { tone = 'deep', class: className } = Astro.props;
+const green = tone === 'deep' ? '#3f7a66' : '#8db5a2';
+const trunk = tone === 'deep' ? '#7a5a45' : '#b49a86';
+---
+
+<svg class:list={['pine', className]} viewBox="0 0 200 300" aria-hidden="true">
+  <rect x="90" y="246" width="20" height="40" rx="4" fill={trunk} />
+
+  <g fill={green} stroke={green} stroke-width="14" stroke-linejoin="round">
+    <path d="M100 120 L180 255 L20 255 Z" />
+    <path d="M100 75 L160 185 L40 185 Z" />
+    <path d="M100 25 L140 120 L60 120 Z" />
+  </g>
+
+  <!-- snow resting on each layer, with a scalloped edge where it drips -->
+  <g fill="#ffffff" stroke="#e8dfcf" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M58 190 L142 190 L156 215 q-7 9 -14 0 q-7 9 -14 0 q-7 9 -14 0 q-7 9 -14 0 q-7 9 -14 0 q-7 9 -14 0 q-7 9 -14 0 q-7 9 -14 0 Z" />
+    <path d="M73 126 L127 126 L141 150 q-7 9 -13.7 0 q-7 9 -13.7 0 q-7 9 -13.7 0 q-7 9 -13.7 0 q-7 9 -13.7 0 q-7 9 -13.7 0 Z" />
+    <path d="M100 16 L127 84 q-6 9 -12 1 q-6 9 -12 0 q-6 9 -12 0 q-6 9 -12 -1 Z" />
+  </g>
+
+  <ellipse cx="100" cy="288" rx="72" ry="10" fill="#ffffff" />
+</svg>
+
+<style>
+  .pine {
+    display: block;
+    height: auto;
+  }
+</style>

@@ -15,6 +15,7 @@
   --mustard: #f2b84b;
   --pine: #7fd1b9;       /* links */
   --coat: #3b5a86;
+  --cream: #f8f3e6;      /* the research page */
 
   --display: 'Shantell Sans Variable', 'Comic Neue', ui-rounded, system-ui, sans-serif;
   --body: 'Figtree Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -28,10 +29,25 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { color-scheme: dark; }
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* The centered text column every section sits in. */
+.wrap {
+  max-width: calc(var(--measure) + 2.5rem);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--snow);
   color: var(--ink);
   font-family: var(--body);
